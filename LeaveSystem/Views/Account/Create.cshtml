@@ -1,0 +1,146 @@
+﻿@model LeaveSystem.ViewModels.RegisterEmployeeViewModel
+@{
+    ViewBag.Title = "Create Employee";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="mx-auto loginbox" style="width:500px">
+            <h4>Add Employee</h4>
+            <form class="needs-validation" novalidate="novalidate" enctype="multipart/form-data"
+                  action="~/account/create" method="post">
+                @Html.AntiForgeryToken()
+                <div class="form-group mr-3">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="EmployeeName"
+                           autofocus="autofocus" required="required" />
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Invalid!!</div>
+                </div>
+
+                <div class="form-group mr-3">
+                    <label for="pwd">Password</label>
+                    <input type="password" class="form-control" id="pwd" name="Password"
+                           autofocus="autofocus" required="required"
+                           />
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Invalid!!</div>
+                </div>
+
+                <div class="form-group mr-3">
+                    <label for="confirmpwd">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirmpwd" name="ConfirmPassword"
+                           autofocus="autofocus" required="required" />
+                    <small id="mess"></small>
+                </div>
+                <div class="form-group mr-3">
+                    <label for="txtemail">Email</label>
+                    <input type="email" class="form-control" id="txtemail" name="EmployeeEmail"
+                           autofocus="autofocus" required="required" />
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Invalid email!!</div>
+                    <small class="email-exist text-danger"></small>
+                </div>
+                <div class="form-group mr-3">
+                    <label for="phone">Contact.No</label>
+                    <input type="text" class="form-control" id="phone" name="EmployeeContactNo"
+                           autofocus="autofocus" required="required" />
+                </div>
+                <div class="form-group mr-3">
+                    <label for="role">Role</label>
+                    <select class="form-control" id="role"
+                            name="RoleID" required="required">
+                        <option value="">Please Select</option>
+                        <option value="1">Project Manager</option>
+                        <option value="2">HR</option>
+                        <option value="3">Employee</option>
+                    </select>
+
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Invalid!!</div>
+                    <div id="special" style="display:none">
+                        <label for="select">
+                            Allow special permission
+                        </label>
+                        <input type="radio" value="1"
+                               id="select" name="IsSpecialPermission" />
+                        <label for="IsSpecialPermission">
+                            Yes
+                        </label>
+                        <input type="radio" value="0"
+                               id="select" name="IsSpecialPermission" />
+                        <label for="IsSpecialPermission">
+                            No
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group mr-3">
+                    <label for="img">Upload Profile Image</label>
+                    <input type="file" class="form-control-file" id="img" name="Image"/>
+   
+                </div>
+                <button class="btn btn-danger" type="submit">Register Employee</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+
+
+    $('#role').change(function () {
+
+        var selection = $(this).val();
+        if (selection == 2) {
+            $('#special').show();
+        }
+        else {
+            $('#special').hide();
+        }
+
+    });
+
+    $("a[href='/account/create']").attr("id", "active");
+    $(document).on("submit", "needs-validation", validate);
+    $(".needs-validation input").blur(validate);
+    function validate(event) {
+        if ($(".needs-validation")[0].checkValidity() == false || $(".email-exist").text()!="") {
+            event.preventDefault();
+        }
+        $(".needs-validation")[0].classList.add("was-validated");
+    }
+    $("#txtemail").blur(function () {
+        $.ajax({
+            url: "/api/accounts?email=" + $("#txtemail").val(), type: "GET",
+            success:
+                function (response) {
+                    if (response == "Not Found") {
+                        $(".email-exist").text("");
+                        $(".email-exist").parent(".form-group").find(".valid-feedback").css("color", "#28a745");
+                        $(':input[type=submit]').prop('disabled', false);
+                    }
+                    else {
+                        $(".email-exist").text("Email already exists!!");
+                        $(".email-exist").parent(".form-group").find(".valid-feedback").css("color", "white");
+                        $(':input[type=submit]').prop('disabled', true);
+                    }
+                },
+            error: function () {
+                $(".email-exist").text("error");
+            }
+        });
+    }
+    );
+
+    $('#pwd, #confirmpwd').blur(function () {
+        if ($('#pwd').val() == $('#confirmpwd').val()) {
+            $('#mess').html('Passwords matches').css('color', 'green');
+        }
+        else {
+            $('#mess').html('Passwords dont match').css('color', 'red');
+            $("#confirmpwd").focus();
+        }
+        
+    });
+</script>
+

@@ -1,0 +1,117 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/umd/popper.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="~/Content/Style.css" rel="stylesheet" />
+
+    <title>@ViewBag.Title -Leave System </title>
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-sm ">
+            <a class="navbar-brand" href="#">QBurst</a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/home/index">Home</a>
+                    </li>
+                    @if (Session["CurrentEmail"] == null)
+                    {
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/account/login">Login</a>
+                        </li>
+                    }
+                    @if (Convert.ToInt32(Session["CurrentRoleID"]) == 1)
+                    {
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/leave/approve">Show Requests</a>
+                        </li>
+                    }
+                    @if (Convert.ToInt32(Session["CurrentPermission"]) == 1
+                        && Convert.ToInt32(Session["CurrentRoleID"]) == 2)
+                    {
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/leave/approve">Show Requests</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/account/create">Add Employee</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/leave/showallleaves">Leave Requests</a>
+                        </li>
+                    }
+                    @if (Convert.ToInt32(Session["CurrentRoleID"]) == 2 &&
+                        Convert.ToInt32(Session["CurrentPermission"]) == 0)
+                    {
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/leave/showallleaves">Leave Requests</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/account/create">Add Employee</a>
+                        </li>
+                    }
+                    @if (Convert.ToInt32(Session["CurrentRoleID"]) == 3)
+                    {
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/leave/applyleave">Apply Leave</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/leave/show?id=@Session["CurrentEmpID"]">
+                                Leave Requests
+                            </a>
+                        </li>
+                    }
+                    @if (Session["CurrentEmail"] != null)
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                                <span>Welcome @Session["CurrentName"]</span>
+
+                            </a>
+                            <div class="dropdown-menu bg-info">
+                                <a class="dropdown-item" href="/account/logout">Logout</a>
+                                <a class="dropdown-item" href="/account/UpdateProfile">Update Profile</a>
+                                <a class="dropdown-item" href="/account/ChangePassword">Change Password</a>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+            @if (Session["CurrentEmail"] != null)
+            {
+        <form class="form-inline" action="/account/search" method="post">
+            @Html.AntiForgeryToken()
+            <input type="search" class="form-control mr-sm-2" style="width:200px"
+                   placeholder="Search" name="str"/>
+            <label for="rolesearch"></label>
+            <select class="form-control" id="rolesearch"
+                    name="roleid">
+                <option value="0">Select Role</option>
+                <option value="1">Project Manager</option>
+                <option value="2">HR</option>
+                <option value="3">Employee</option>
+
+            </select>
+            <button class="btn btn-dark">Search Employee</button>
+        </form>
+            }
+        </nav>
+
+        <div>
+            @RenderBody()
+        </div>
+    </div>
+</body>
+
+</html>

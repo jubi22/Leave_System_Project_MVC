@@ -1,0 +1,96 @@
+﻿@model LeaveSystem.ViewModels.ApplyLeaveViewModel
+@{
+    ViewBag.Title = "Apply Leave";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="mx-auto loginbox" style="width:500px">
+            <h4>Apply Leave</h4>
+            <form class="needs-validation" novalidate="novalidate" action="~/leave/applyleave" method="post">
+                @Html.AntiForgeryToken()
+                <div class="form-group mr-3">
+                    <label for="empid">Employee ID</label>
+                    <input  class="form-control" id="empid" name="EmployeeID"
+                         value="@Session["CurrentEmpID"]"/>
+
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Invalid ID</div>
+                </div>
+                
+                <div class="form-group mr-3">
+                    <label for="start">Leave Start Date</label>
+                    <input type="date" class="form-control" id="start" name="LeaveStartDate"
+                           autofocus="autofocus" required="required" />
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Invalid</div>
+                </div>
+                <div class="form-group mr-3">
+                    <label for="end">Leave End Date</label>
+                    <input type="date" class="form-control" id="end" name="LeaveEndDate"
+                           autofocus="autofocus" required="required" onblur="compare();"/>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Invalid</div>
+                </div>
+                <div class="form-group mr-3">
+                    <label for="day">No. of days</label>
+                    <input type="text" class="form-control" id="day" name="Days"
+                           autofocus="autofocus" required="required" />
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Invalid</div>
+                </div>
+                <div class="form-group mr-3">
+                    <label for="type">Leave Type</label>
+                    <select class="form-control" id="type" name="Leavetype" required="required">
+                        <option value="">Select</option>
+                        <option value="Paid Leave">Paid Leave</option>
+                        <option value="Maternity Leave">Maternity Leave</option>
+                    </select>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Invalid</div>
+                </div>
+                <div class="form-group mr-3">
+                    <label for="descr">Leave reason</label>
+                    <textarea id="descr" name="LeaveDescription" placeholder="Type here.."
+                              required="required"></textarea>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Invalid</div>
+                </div>
+                <input type="hidden" name="LeaveStatusID" value="1" />
+               
+                <button class="btn btn-success confirm" type="submit">
+                Apply</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $("a[href='/account/login']").attr("id", "active");
+    $(document).on("submit", "needs-validation", validate);
+    $(".needs-validation input").blur(validate);
+    function validate(event) {
+        if ($(".needs-validation")[0].checkValidity() == false) {
+            event.preventDefault();
+        }
+        $(".needs-validation")[0].classList.add("was-validated");
+    }
+    function compare() {
+        var startDt = document.getElementById("start").value;
+        var endDt = document.getElementById("end").value;
+
+        if ((new Date(startDt).getTime() > new Date(endDt).getTime())) {
+            alert("Leave End date should not be lesser than Leave start date")
+            $(':input[type=submit]').prop('disabled', true);
+            $("#start").focus()
+        }
+        else {
+            $(':input[type=submit]').prop('disabled', false);
+        }
+
+        $('.confirm').on('click', function () {
+            return confirm('You are about to apply for leave!');
+        });
+    }
+</script>
+

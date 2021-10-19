@@ -1,0 +1,25 @@
+﻿@model List< LeaveSystem.ViewModels.EmployeeViewModel>
+@{
+    ViewBag.Title = "ShowEmployee";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table">
+            <tr>
+                <th>Leave ID</th>
+                <th>Employee ID</th>
+            </tr>
+            @foreach (var k in Model)
+            {
+                <tr>
+                    <td>@k.RoleID</td>
+                    <td>@k.EmployeeID</td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>
+

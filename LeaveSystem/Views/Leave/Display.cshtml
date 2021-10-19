@@ -1,0 +1,47 @@
+﻿@model List< LeaveSystem.ViewModels.LeaveDetailsViewModel>
+@{
+    ViewBag.Title = "Display";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table">
+            <tr>
+                <th>Leave ID</th>
+                <th>Employee ID</th>
+                <th>Leave Start</th>
+                <th>Leave End</th>
+                <th>Leave Reason</th>
+                <th>Action</th>
+            </tr>
+            @foreach (var k in Model)
+            {
+                <tr>
+                    <td>@k.LeaveID</td>
+                    <td>@k.EmployeeID</td>
+
+                    <td>@k.LeaveStartDate</td>
+                    <td>@k.LeaveEndDate</td>
+                    <td>@k.LeaveDescription</td>
+                    <td>
+                        <form id="yourFormId"
+                              action="/leave/display" method="post">
+
+                            <select name="Status">
+                                <option value="Approved">Approve</option>
+                                <option value="Rejected">Reject</option>
+                            </select>
+                            <input type="hidden" name="AprroverName" value="@Session["CurrentName"]" />
+                            <input type="hidden" name="LeaveID" value="@k.LeaveID" />
+                            <button class="btn btn-success submitBtn" type="submit">Submit</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>
+

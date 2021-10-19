@@ -1,0 +1,51 @@
+﻿@model List< LeaveSystem.ViewModels.EmployeeViewModel>
+@{
+    ViewBag.Title = "SearchRole";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<style>
+    .row a:visited {
+        color: blue !important
+    }
+</style>
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table">
+            <tr>
+                <th>Employee ID</th>
+                <th>Name</th>
+            </tr>
+            @if (Convert.ToInt32(Session["CurrentRoleID"]) == 2)
+            {
+                foreach (var k in Model)
+                {
+
+                    <tr>
+                        <td>@k.EmployeeID</td>
+                        <td>@k.EmployeeName</td>
+
+                        <td><a href="/account/Showemp?id=@k.EmployeeID">View</a></td>
+                        <td><a href="/account/EditEmployee?id=@k.EmployeeID">Edit</a></td>
+                        <td><a href="/account/delete?employeeid=@k.EmployeeID">Delete</a></td>
+
+                    </tr>
+
+                }
+            }
+            else
+            {
+                foreach (var k in Model)
+                {
+                    <tr>
+                        <td>@k.EmployeeEmail</td>
+                        <td>@k.EmployeeName</td>
+                        <td><a href="/account/Showemp?id=@k.EmployeeID">View</a></td>
+                    </tr>
+
+                }
+            }
+        </table>
+
+    </div>
+</div>
+
