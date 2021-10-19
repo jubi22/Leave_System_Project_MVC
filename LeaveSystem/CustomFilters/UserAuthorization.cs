@@ -48,16 +48,4 @@ namespace LeaveSystem.CustomFilters
             
         }
     }
-    public class EmpAuthorization : FilterAttribute, IAuthorizationFilter
-    {
-        public void OnAuthorization(AuthorizationContext context)
-        {
-            if (Convert.ToInt32(context.RequestContext.HttpContext.Session["CurrentRoleID"]) != 2
-                || Convert.ToInt32(context.RequestContext.HttpContext.Session["CurrentPermission"]) == 0)
-            {
-                context.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(
-                    new { controller = "Home", action = "Index" }));
-            }
-        }
-    }
 }
