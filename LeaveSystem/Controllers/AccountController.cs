@@ -20,7 +20,7 @@ namespace LeaveSystem.Controllers
             this.rs = rs;
         }
        
-        public ActionResult Login()
+        public ActionResult Login()         // Login Page
         {
             LoginViewModel lvm = new LoginViewModel();
             return View(lvm);
@@ -52,14 +52,14 @@ namespace LeaveSystem.Controllers
             }
             return View(login);
         }
-        public ActionResult Logout()
+        public ActionResult Logout()        // Logout Page
         {
             Session.Abandon();
             return RedirectToAction("Index", "Home");
         }
         [UserAuthorization]
         [RoleAuthorization]
-        public ActionResult Create()
+        public ActionResult Create()        //To add a new employee by HR only
         {
             List<RoleViewModel> roles = this.rs.GetRoles();
             ViewBag.roles = roles;
@@ -93,7 +93,7 @@ namespace LeaveSystem.Controllers
             }
         }
         [UserAuthorization]
-        public ActionResult UpdateProfile()
+        public ActionResult UpdateProfile()         //Update Profile Information
         {
 
             return View();
@@ -117,7 +117,7 @@ namespace LeaveSystem.Controllers
             }
         }
         [UserAuthorization]
-        public ActionResult ChangePassword()
+        public ActionResult ChangePassword()        //Change password based on role
         {
             return View();
         }
@@ -141,7 +141,7 @@ namespace LeaveSystem.Controllers
         [UserAuthorization]
         [HttpPost]
        
-        public ActionResult Search(string str, int roleid)
+        public ActionResult Search(string str, int roleid)      //search employees bases on role category
         {
             if (roleid!=0)
             {
@@ -159,20 +159,20 @@ namespace LeaveSystem.Controllers
             }
         }
         [UserAuthorization]
-        public ActionResult Delete(int employeeid)
+        public ActionResult Delete(int employeeid)          //delete an employee by HR only 
         {
             this.es.DeleteEmployee(employeeid);
             return RedirectToAction("Index", "Home");
         }
         [UserAuthorization]
-        public ActionResult Showemp(int id)
+        public ActionResult Showemp(int id)             //View details of Employee
         {
            
             EmployeeViewModel e = this.es.GetEmployeeByID(id);
             return View(e);
         }
         [UserAuthorization]
-        public ActionResult EditEmployee(int id)
+        public ActionResult EditEmployee(int id)            //Update employee information by HR only
         {
             EmployeeViewModel e = this.es.GetEmployeeByID(id);
             return View(e);
