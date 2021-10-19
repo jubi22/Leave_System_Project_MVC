@@ -22,7 +22,7 @@ namespace LeaveSystem.Controllers
             this.es = es;
         }
         [UserAuthorization]
-        public ActionResult ApplyLeave()
+        public ActionResult ApplyLeave()        //apply leave feature for Employee
         {
             return View();
         }
@@ -48,19 +48,19 @@ namespace LeaveSystem.Controllers
         [UserAuthorization]
         [HRAuthorization]
       
-        public ActionResult Approve()
+        public ActionResult Approve()       // Aprrove/reject leaves feature for Project Manager/ HR with special permission
         {
 
             List<LeaveDetailsViewModel> l = this.ls.GetLeaves().ToList();
             return View(l);
         }
-        public ActionResult Display()
+        public ActionResult Display()   // Show pending leave requests for Project Manager
         {
         
             return View(); 
         }
         [HttpPost]
-        public ActionResult Display(EditLeaveViewModel evm)
+        public ActionResult Display(EditLeaveViewModel evm)         // After approval/rejection sent email to corresponding employee regarding the status
         {
             this.ls.UpdateLeave(evm);
             var e= this.es.GetEmail(evm.EmployeeID);
@@ -98,7 +98,7 @@ namespace LeaveSystem.Controllers
       
         }
         [UserAuthorization]
-        public ActionResult Show(int id)
+        public ActionResult Show(int id)        //display leave request status in employee page
         {
             
             List<LeaveDetailsViewModel> l = this.ls.GetLeaveByID(id);
@@ -106,7 +106,7 @@ namespace LeaveSystem.Controllers
         }
         [UserAuthorization]
         [RoleAuthorization]
-        public ActionResult ShowallLeaves()
+        public ActionResult ShowallLeaves()     //display all leave status/requests of all employees in HR page
         {
             List<LeaveDetailsViewModel> l = this.ls.GetLeaves();
             
