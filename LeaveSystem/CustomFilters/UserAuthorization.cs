@@ -5,7 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 namespace LeaveSystem.CustomFilters
 {
-    public class UserAuthorization: FilterAttribute,IAuthorizationFilter
+    //Prevents displaying pages if no one is logged in site
+    public class UserAuthorization: FilterAttribute,IAuthorizationFilter    
     {
         public void OnAuthorization(AuthorizationContext context)
         {
@@ -16,6 +17,9 @@ namespace LeaveSystem.CustomFilters
             }
         }
     }
+
+    //Employees are not allowed to view other employees leave requests and add/update employee.
+    //Only HR is allowed to do so.
     public class RoleAuthorization : FilterAttribute, IAuthorizationFilter
     {
         public void OnAuthorization(AuthorizationContext context)
@@ -28,6 +32,7 @@ namespace LeaveSystem.CustomFilters
         }
     }
 
+    //HR with special permission and PM has the access to approve/reject leave requests.
     public class HRAuthorization : FilterAttribute, IAuthorizationFilter
     {
         public void OnAuthorization(AuthorizationContext context)
