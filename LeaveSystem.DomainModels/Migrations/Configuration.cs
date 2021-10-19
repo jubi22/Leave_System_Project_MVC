@@ -18,6 +18,19 @@
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
+            context.Employees.Add
+                (
+                new Employee()
+                {
+                    EmployeeName = "HR",
+                    EmployeeEmail = "hr@gmail.com",
+                    EmployeeContactNo = "+91 987878999",
+                    Password = "ade42c8d8740e9cf379b703481b6663ee2f7cfcf22aba5a68fb811842e53f6ed",
+                    RoleID = 2,
+                    IsSpecialPermission = 0,
+
+                }
+                );
         }
     }
 }

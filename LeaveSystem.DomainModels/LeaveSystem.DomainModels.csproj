@@ -55,41 +55,9 @@
     <Compile Include="Employee.cs" />
     <Compile Include="Leaves.cs" />
     <Compile Include="LeaveStatus.cs" />
-    <Compile Include="Migrations\202110150710575_new1.cs" />
-    <Compile Include="Migrations\202110150710575_new1.designer.cs">
-      <DependentUpon>202110150710575_new1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110150713165_new11.cs" />
-    <Compile Include="Migrations\202110150713165_new11.designer.cs">
-      <DependentUpon>202110150713165_new11.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110150714515_new2.cs" />
-    <Compile Include="Migrations\202110150714515_new2.designer.cs">
-      <DependentUpon>202110150714515_new2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110151057340_new6.cs" />
-    <Compile Include="Migrations\202110151057340_new6.designer.cs">
-      <DependentUpon>202110151057340_new6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110151135383_new7.cs" />
-    <Compile Include="Migrations\202110151135383_new7.designer.cs">
-      <DependentUpon>202110151135383_new7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110151147021_new8.cs" />
-    <Compile Include="Migrations\202110151147021_new8.designer.cs">
-      <DependentUpon>202110151147021_new8.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110151148500_new9.cs" />
-    <Compile Include="Migrations\202110151148500_new9.designer.cs">
-      <DependentUpon>202110151148500_new9.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110160922225_imagedata.cs" />
-    <Compile Include="Migrations\202110160922225_imagedata.designer.cs">
-      <DependentUpon>202110160922225_imagedata.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110162105318_stringdata.cs" />
-    <Compile Include="Migrations\202110162105318_stringdata.designer.cs">
-      <DependentUpon>202110162105318_stringdata.cs</DependentUpon>
+    <Compile Include="Migrations\202110191626264_add_data.cs" />
+    <Compile Include="Migrations\202110191626264_add_data.designer.cs">
+      <DependentUpon>202110191626264_add_data.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -100,32 +68,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202110150710575_new1.resx">
-      <DependentUpon>202110150710575_new1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110150713165_new11.resx">
-      <DependentUpon>202110150713165_new11.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110150714515_new2.resx">
-      <DependentUpon>202110150714515_new2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110151057340_new6.resx">
-      <DependentUpon>202110151057340_new6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110151135383_new7.resx">
-      <DependentUpon>202110151135383_new7.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110151147021_new8.resx">
-      <DependentUpon>202110151147021_new8.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110151148500_new9.resx">
-      <DependentUpon>202110151148500_new9.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110160922225_imagedata.resx">
-      <DependentUpon>202110160922225_imagedata.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110162105318_stringdata.resx">
-      <DependentUpon>202110162105318_stringdata.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202110191626264_add_data.resx">
+      <DependentUpon>202110191626264_add_data.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
