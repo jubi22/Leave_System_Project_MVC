@@ -52,6 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmployeeRepositories.cs" />
+    <Compile Include="IEmployeeRepository.cs" />
+    <Compile Include="ILeavesRepository.cs" />
+    <Compile Include="IRoleRepositories.cs" />
     <Compile Include="LeaveRepositories.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleRepositories.cs" />

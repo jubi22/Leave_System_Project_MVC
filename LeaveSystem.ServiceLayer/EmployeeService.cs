@@ -10,23 +10,10 @@ using AutoMapper;
 using AutoMapper.Configuration;
 namespace LeaveSystem.ServiceLayer
 {
-    public interface IEmployeeService
-    {
-        void InsertEmployee(RegisterEmployeeViewModel uvm);
-        void UpdateEmployeeDetails(EditEmployeeDetailsViewModel uvm);
-      
-        void UpdateEmployeePassword(EditEmployeePasswordViewModel uvm);
-        void DeleteEmployee(int EmployeeID);
-        List<EmployeeViewModel> GetEmployees();
-        LoginViewModel GetEmployeesLogin(string Email, string Password);
-        LoginViewModel GetEmployeeByEmail(string Email);
-        EmployeeViewModel GetEmployeeByID(int EmployeeID);
-      
-        EmployeeViewModel GetEmail(int id);
-    }
+
     public class EmployeeService : IEmployeeService
     {
-        readonly IEmployeeRepository er;
+        private readonly IEmployeeRepository er;
         public EmployeeService()
         {
             er = new EmployeeRepository();

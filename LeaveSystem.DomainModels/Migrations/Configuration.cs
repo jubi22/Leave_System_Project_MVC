@@ -31,6 +31,13 @@
 
                 }
                 );
+            context.Roles.Add(new Role() { RoleID = 1, RoleName = "PM" });
+            context.Roles.Add(new Role() { RoleID = 2, RoleName = "HR" });
+            context.Roles.Add(new Role() { RoleID = 3, RoleName = "Employee" });
+            context.LeaveStatus.Add(new LeaveStatus() { StatusID = 1, Status = "Pending" });
+            context.LeaveStatus.Add(new LeaveStatus() { StatusID = 2, Status = "Approved" });
+            context.LeaveStatus.Add(new LeaveStatus() { StatusID = 3, Status = "Rejected" });
+
         }
     }
 }

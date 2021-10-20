@@ -6,26 +6,10 @@ using System.Threading.Tasks;
 using LeaveSystem.DomainModels;
 namespace LeaveSystem.Repositories
 {
-    public interface IEmployeeRepository
+    public  class EmployeeRepository : IEmployeeRepository
     {
+        private readonly ConnectDB dbcontext = new ConnectDB();
         
-        void InsertEmployee(Employee emp);
-        void UpdateEmployeeDetails(Employee emp);
-        void UpdateEmployeePassword(Employee emp);
-        void DeleteEmployee(int EmployeeID);
-        List<Employee> GetEmployees();
-        List<Employee> GetEmployeesLogin(string Email, string Password);
-        List<Employee> GetEmployeeByEmail(string Email);
-        List<Employee> GetEmployeeByID(int EmployeeID);
-       
-        Employee GetEmail(int id);
-
-
-    }
-    public class EmployeeRepository : IEmployeeRepository
-    {
-        readonly ConnectDB dbcontext = new ConnectDB();
-
         public Employee GetEmail(int id)
         {
             Employee e = dbcontext.Employees.Where(t => t.EmployeeID == id).FirstOrDefault();

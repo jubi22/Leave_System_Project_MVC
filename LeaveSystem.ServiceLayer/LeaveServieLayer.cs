@@ -10,18 +10,9 @@ using AutoMapper;
 using AutoMapper.Configuration;
 namespace LeaveSystem.ServiceLayer
 {
-    public interface ILeaveServieLayer
-    {
-        void ApplyLeaves(ApplyLeaveViewModel avm);
-        List<LeaveDetailsViewModel> GetLeaves();
-        void UpdateLeave(EditLeaveViewModel evm);
-        List<LeaveDetailsViewModel> GetLeaveByID(int LeaveID);
-       
- 
-    }
     public class LeaveServieLayer:ILeaveServieLayer
     {
-        readonly ILeavesRepository ls;
+        private readonly ILeavesRepository ls;
         public LeaveServieLayer()
         {
             ls = new LeavesRepository();

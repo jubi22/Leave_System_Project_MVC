@@ -7,20 +7,10 @@ using LeaveSystem.DomainModels;
 using LeaveSystem.ViewModels;
 namespace LeaveSystem.Repositories
 {
-    public interface ILeavesRepository
-    {
-        void ApplyLeaves(Leaves leaves);
-        List<Leaves> GetLeaveDetails();
-        void UpdateLeave(Leaves leaves);
-        List<Leaves> GetLeaveByID(int ID);
-      
-       
-  
 
-    }
     public class LeavesRepository : ILeavesRepository
     {
-        readonly ConnectDB dbcontext = new ConnectDB();
+        private readonly ConnectDB dbcontext = new ConnectDB();
 
         public List<Leaves> GetLeaveByID(int ID)
         {

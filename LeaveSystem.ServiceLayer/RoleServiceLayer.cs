@@ -10,13 +10,9 @@ using AutoMapper;
 using AutoMapper.Configuration;
 namespace LeaveSystem.ServiceLayer
 {
-    public interface IRoleServiceLayer
-    {
-        List<RoleViewModel> GetRoles();
-    }
     public class RoleServiceLayer:IRoleServiceLayer
     {
-        readonly IRoleRepositories rs = new RoleRepositories();
+        private readonly IRoleRepositories rs = new RoleRepositories();
         public List<RoleViewModel> GetRoles()
         {
             List<Role> r = rs.GetRoles();
