@@ -36,6 +36,7 @@ namespace LeaveSystem.Repositories
             {
                 e.EmployeeName = emp.EmployeeName;
                 e.EmployeeContactNo = emp.EmployeeContactNo;
+                e.Image = emp.Image;
                 dbcontext.SaveChanges();
             }
         }

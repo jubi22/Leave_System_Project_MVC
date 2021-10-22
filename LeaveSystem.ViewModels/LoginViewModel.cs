@@ -15,6 +15,7 @@ namespace LeaveSystem.ViewModels
         public string EmployeeEmail { get; set; }
         [Required(ErrorMessage ="Password is required")]
         public string Password { get; set; }
+        public string Image { get; set; }
         public int RoleID { get; set; }
         public string RoleName { get; set; }
         

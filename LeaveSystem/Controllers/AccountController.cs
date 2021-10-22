@@ -41,6 +41,7 @@ namespace LeaveSystem.Controllers
                     Session["CurrentEmail"] = lvm.EmployeeEmail;
 
                     Session["CurrentName"] = lvm.EmployeeName;
+                    Session["CurrentImage"] = lvm.Image;
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -109,6 +110,20 @@ namespace LeaveSystem.Controllers
         [UserAuthorization]
         public ActionResult UpdateProfile(EditEmployeeDetailsViewModel edit)
         {
+           
+            if (edit.Image=="yes")
+            {
+                edit.Image = null;
+            }
+            Session["CurrentImage"] = edit.Image;
+            if ( edit.Image != null)
+            {
+                var file = Request.Files[0];
+                var imgbytes = new Byte[file.ContentLength];
+                file.InputStream.Read(imgbytes, 0, file.ContentLength);
+                var base64string = Convert.ToBase64String(imgbytes, 0, imgbytes.Length);
+                edit.Image = base64string;
+            }
             if (ModelState.IsValid)
             {
                 if (edit.EmployeeName != null)

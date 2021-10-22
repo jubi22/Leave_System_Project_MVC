@@ -17,5 +17,6 @@ namespace LeaveSystem.ViewModels
         public int EmployeeID { get; set; }
         public string RoleName { get; set; }
         public int RoleID { get; set; }
+        public string Image { get; set; }
     }
 }

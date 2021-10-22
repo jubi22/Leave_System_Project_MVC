@@ -3,27 +3,67 @@
     ViewBag.Title = "UpdateProfile";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
+<style>
+    img {
+        
+         width: 100px;
+         height: 100px;
+    }
+
+    .text {
+        margin-top: 50px
+    }
+
+    .row {
+        margin-left: 30px;
+    }
+     #remove:visited{
+        color:blue !important
+    }
+</style>
 <div class="row">
     <div class="col-sm-12">
         <div class="mx-auto loginbox" style="width:500px">
             <h4>Update Profile Information</h4>
-            <form class="needs-validation" novalidate="novalidate" action="~/account/updateprofile" method="post">
+            <form class="needs-validation" novalidate="novalidate" action="~/account/updateprofile"
+                  enctype="multipart/form-data" method="post">
                 @Html.AntiForgeryToken()
                 <div class="form-group mr-3">
                     <label for="email">Email</label>
-                    <input type="text" value="@Session["CurrentEmail"]" class="form-control" disabled/>
+                    <input type="text" value="@Session["CurrentEmail"]" class="form-control" disabled />
                 </div>
                 <div class="form-group mr-3">
                     <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" name="EmployeeName"
-                            value="@Session["CurrentName"]"  />
-                    @Html.ValidationMessageFor(t=>t.EmployeeName)
+                           value="@Session["CurrentName"]" />
+                    @Html.ValidationMessageFor(t => t.EmployeeName)
                 </div>
                 <div class="form-group mr-3">
                     <label for="phone">Contact.No</label>
-                    <input type="text" class="form-control" id="phone" name="EmployeeContactNo"
-                            />
-                </div>
+                    <input type="text" class="form-control" id="phone" name="EmployeeContactNo" />
+                </div><br />
+                      <div class="form-group mr-3">
+
+                          Change Profile Image:<input type="file" class="form-control-file" name="Image" /> 
+                          @if (Session["CurrentImage"] != null) 
+                          { 
+
+                            <p>or</p>
+                          <label for="rem">Remove photo</label>
+                          <input type="radio" value="yes"
+                                 id="rem" name="Image" />
+                          <label for="img">
+                              Yes
+                          </label>
+                          <input type="radio" value="no"
+                                 id="img" name="Image" />
+                          <label for="img">
+                              No
+                          </label>
+                          }
+
+                      </div>
+                
                 <button class="btn btn-danger" type="submit">Update Profile</button>
                 <button formaction="/home/index" class="btn btn-danger">Cancel</button>
             </form>
