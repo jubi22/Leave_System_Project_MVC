@@ -284,6 +284,7 @@
     <Content Include="Views\Leave\ShowallLeaves.cshtml" />
     <Content Include="Views\Account\Showemp.cshtml" />
     <Content Include="Views\Account\EditEmployee.cshtml" />
+    <Content Include="Views\Shared\Image_PartialView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -75,11 +75,9 @@
                         </label>
                     </div>
                 </div>
-                <div class="form-group mr-3">
-                    <label for="img">Upload Profile Image</label>
-                    <input type="file" class="form-control-file" id="img" name="Image"/>
-   
-                </div>
+                @{
+                    Html.RenderPartial("Image_PartialView");
+                 }
                 <button class="btn btn-danger confirm" type="submit">Register Employee</button>
             </form>
         </div>

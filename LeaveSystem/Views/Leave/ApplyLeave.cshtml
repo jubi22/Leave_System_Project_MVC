@@ -84,15 +84,15 @@
         var startDt = document.getElementById("start").value;
         var endDt = document.getElementById("end").value;
 
-        if ((new Date(startDt).getTime() > new Date(endDt).getTime())
-            || (new Date(startDt).getTime() == new Date(endDt).getTime()) ) {
-            alert("Leave End date should not be lesser than or same as Leave start date")
+        if ((new Date(startDt).getTime() > new Date(endDt).getTime()))
+              {
+            alert("Leave End date should not be lesser Leave start date")
             $(':input[type=submit]').prop('disabled', true);
             $("#start").focus()
         }
 
         else if (startDt == "" || endDt=="") {
-            alert("Leave Dates are mandatory for appling leave")
+            alert("Leave Dates are mandatory for applying leave")
             $(':input[type=submit]').prop('disabled', true);
             $("#start").focus()
         }
@@ -101,7 +101,7 @@
         }
 
         $('.confirm').on('click', function () {
-            return confirm('You are about to apply for leave!');
+            return confirm('You are about to apply for leave!!');
         });
     }
 </script>
