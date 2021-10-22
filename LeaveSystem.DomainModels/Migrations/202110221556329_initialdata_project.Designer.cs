@@ -7,13 +7,13 @@ namespace LeaveSystem.DomainModels.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class remove_status : IMigrationMetadata
+    public sealed partial class initialdata_project : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(remove_status));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initialdata_project));
         
         string IMigrationMetadata.Id
         {
-            get { return "202110210615511_remove_status"; }
+            get { return "202110221556329_initialdata_project"; }
         }
         
         string IMigrationMetadata.Source

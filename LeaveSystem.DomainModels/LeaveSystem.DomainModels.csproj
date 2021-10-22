@@ -55,9 +55,9 @@
     <Compile Include="Employee.cs" />
     <Compile Include="Leaves.cs" />
     <Compile Include="LeaveStatus.cs" />
-    <Compile Include="Migrations\202110210615511_remove_status.cs" />
-    <Compile Include="Migrations\202110210615511_remove_status.designer.cs">
-      <DependentUpon>202110210615511_remove_status.cs</DependentUpon>
+    <Compile Include="Migrations\202110221556329_initialdata_project.cs" />
+    <Compile Include="Migrations\202110221556329_initialdata_project.designer.cs">
+      <DependentUpon>202110221556329_initialdata_project.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,8 +68,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202110210615511_remove_status.resx">
-      <DependentUpon>202110210615511_remove_status.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202110221556329_initialdata_project.resx">
+      <DependentUpon>202110221556329_initialdata_project.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
