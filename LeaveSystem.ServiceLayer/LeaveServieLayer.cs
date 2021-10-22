@@ -41,29 +41,30 @@ namespace LeaveSystem.ServiceLayer
             Leaves l = mapper.Map<ApplyLeaveViewModel, Leaves>(avm);
             ls.ApplyLeaves(l);
         }
-        public List<LeaveDetailsViewModel> GetLeaves()
+        public List<DTO.LeavesDTO> GetLeaves()
         {
-            List<Leaves> l = ls.GetLeaveDetails();
+            List<DTO.LeavesDTO> l = ls.GetLeaveDetails();
             var config = new MapperConfiguration(t =>
             {
-                t.CreateMap<Leaves, LeaveDetailsViewModel>();
+                t.CreateMap<Leaves, DTO.LeavesDTO>();
                 t.IgnoreUnmapped();
             });
             IMapper mapper = config.CreateMapper();
-            List<LeaveDetailsViewModel> lvm = mapper.Map<List<Leaves>, List<LeaveDetailsViewModel>>(l);
+            List<DTO.LeavesDTO> lvm = mapper.Map<List<DTO.LeavesDTO>, List<DTO.LeavesDTO>>(l);
             return lvm;
         }
-        public List<LeaveDetailsViewModel> GetLeaveByID(int ID)
+        public List<DTO.LeavesDTO> GetLeaveByID(int ID)
         {
-            List<Leaves> l = ls.GetLeaveByID(ID);
+            
+            List<DTO.LeavesDTO> l = ls.GetLeaveByID(ID);
             var config = new MapperConfiguration(t =>
             {
-                t.CreateMap<Leaves, LeaveDetailsViewModel>();
+                t.CreateMap<Leaves, DTO.LeavesDTO>();
                 t.IgnoreUnmapped();
             });
             IMapper mapper = config.CreateMapper();
-            List<LeaveDetailsViewModel> lvm = mapper.Map<List<Leaves>,
-                List<LeaveDetailsViewModel>>(l);
+            List<DTO.LeavesDTO> lvm = mapper.Map<List<DTO.LeavesDTO>,
+                List<DTO.LeavesDTO>>(l);
             return lvm;
         }
     }

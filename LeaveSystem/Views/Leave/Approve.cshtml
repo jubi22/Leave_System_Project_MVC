@@ -1,45 +1,53 @@
-﻿
+﻿@model List<DTO.LeavesDTO>
 @{
     ViewBag.Title = "Approve Req";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    int count = 1;
 }
     <div class="row">
         <div class="col-sm-12">
             <table class="table">
                 <tr>
-                    <th>Employee ID</th>
+                    <th>S.No</th>
+                    <th>Employee Name</th>
+
                     <th>Leave Start</th>
                     <th>Leave End</th>
+                    <th>No. of Days</th>
+                    <th>Leave Type</th>
                     <th>Leave Reason</th>
                     <th>Action</th>
-                    
+
                 </tr>
                 @foreach (var k in Model)
                 {
-                    if (k.Status == null && k.LeaveStatusID == 1)
+                    if (k.Leaves.LeaveStatusID==1)
                     {
                         <tr>
-                            <td>@k.EmployeeID</td>
-                            <td>@k.LeaveStartDate</td>
-                            <td>@k.LeaveEndDate</td>
-                            <td>@k.LeaveDescription</td>
+                            <td>@count</td>
+                            <td>@k.Employee.EmployeeName</td>
+                            <td>@k.Leaves.LeaveStartDate</td>
+                            <td>@k.Leaves.LeaveEndDate</td>
+                            <td>@k.Leaves.Days</td>
+                            <td>@k.Leaves.Leavetype</td>
+                            <td>@k.Leaves.LeaveDescription</td>
 
                             <td>
 
                                 <form action="/leave/display" method="post">
 
-                                    <select name="Status" id="status">
+                                    <select name="LeaveStatusID" id="status">
                                         <option value="">Select Action</option>
-                                        <option value="Approved">Approve</option>
-                                        <option value="Rejected">Reject</option>
+                                        <option value="2">Approve</option>
+                                        <option value="3">Reject</option>
                                     </select>
-                                    <input type="hidden" name="EmployeeID" value="@k.EmployeeID" />
+                                    <input type="hidden" name="EmployeeID" value="@k.Employee.EmployeeID" />
                                     <input type="hidden" name="ApproverID" value="@Session["CurrentEmpID"]" />
-                                    <input type="hidden" name="LeaveID" value="@k.LeaveID" />
-                                    <input type="hidden" name="ApprovedDate" value=@DateTime.Now />
-                                    <input type="hidden" name="LeaveStartDate" value="@k.LeaveStartDate" />
-                                    <input type="hidden" name="LeaveEndDate" value="@k.LeaveEndDate" />
-                                    <input type="hidden" name="LeaveDescription" value="@k.LeaveDescription"/>
+                                    <input type="hidden" name="LeaveID" value="@k.Leaves.LeaveID" />
+                                    <input type="hidden" name="ApprovedDate" value=@DateTime.Now.ToString("yyyy/MM/dd") />
+                                    <input type="hidden" name="LeaveStartDate" value="@k.Leaves.LeaveStartDate" />
+                                    <input type="hidden" name="LeaveEndDate" value="@k.Leaves.LeaveEndDate" />
+                                    <input type="hidden" name="LeaveDescription" value="@k.Leaves.LeaveDescription"/>
                                     <button class="btn btn-success confirm" type="submit">
                                         Submit
                                     </button>
@@ -49,6 +57,7 @@
                             </td>
 
                         </tr>
+                        count += 1;
                     }
 
                 }

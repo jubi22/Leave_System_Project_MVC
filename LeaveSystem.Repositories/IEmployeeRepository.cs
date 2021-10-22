@@ -19,5 +19,6 @@ namespace LeaveSystem.Repositories
         List<Employee> GetEmployeeByID(int EmployeeID);
 
         Employee GetEmail(int id);
+        Employee GetPhoneByID(int id);
     }
 }

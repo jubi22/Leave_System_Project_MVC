@@ -20,5 +20,6 @@ namespace LeaveSystem.ServiceLayer
         EmployeeViewModel GetEmployeeByID(int EmployeeID);
 
         EmployeeViewModel GetEmail(int id);
+        EmployeeViewModel GetPhoneByID(int id);
     }
 }

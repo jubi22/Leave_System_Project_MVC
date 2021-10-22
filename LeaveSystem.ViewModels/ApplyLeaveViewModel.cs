@@ -22,5 +22,6 @@ namespace LeaveSystem.ViewModels
         public string LeaveStatusID { get; set; }
         public string Days { get; set; }
         public string Leavetype { get; set; }
+        public int? ApproverID { get; set; }
     }
 }

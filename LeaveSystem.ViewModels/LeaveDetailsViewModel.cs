@@ -16,7 +16,7 @@ namespace LeaveSystem.ViewModels
         public DateTime LeaveStartDate { get; set; }
         public DateTime LeaveEndDate { get; set; }
         public string LeaveDescription { get; set; }
-        public string Status { get; set; }
+        
         public int LeaveStatusID { get; set; }
         public DateTime ApprovedDate { get; set; }
         public string ApproverID { get; set; }

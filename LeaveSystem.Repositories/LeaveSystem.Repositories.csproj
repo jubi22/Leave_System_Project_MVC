@@ -60,6 +60,10 @@
     <Compile Include="RoleRepositories.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{82813f96-32e7-4c27-abb7-91f64ee252c9}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LeaveSystem.DomainModels\LeaveSystem.DomainModels.csproj">
       <Project>{1d30a34b-b7a9-482b-9b09-4cb3ab7b9a3e}</Project>
       <Name>LeaveSystem.DomainModels</Name>

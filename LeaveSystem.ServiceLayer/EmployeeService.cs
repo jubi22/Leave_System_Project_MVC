@@ -19,6 +19,19 @@ namespace LeaveSystem.ServiceLayer
             er = new EmployeeRepository();
         }
 
+        public EmployeeViewModel GetPhoneByID(int id)
+        {
+            Employee le = this.er.GetPhoneByID(id);
+            EmployeeViewModel evm = null;
+            var config = new MapperConfiguration(t =>
+            {
+                t.CreateMap<Employee, EmployeeViewModel>();
+                t.IgnoreUnmapped();
+            });
+            IMapper mapper = config.CreateMapper();
+            evm = mapper.Map<Employee, EmployeeViewModel>(le);
+            return evm;
+        }
         public EmployeeViewModel GetEmail(int id)
         {
             Employee le = this.er.GetEmail(id);

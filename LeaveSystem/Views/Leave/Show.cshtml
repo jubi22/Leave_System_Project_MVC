@@ -1,4 +1,7 @@
-﻿@model List<LeaveSystem.ViewModels.LeaveDetailsViewModel>
+﻿@model List<DTO.LeavesDTO>
+@{
+    int count = 1;
+}
 @{
     ViewBag.Title = "Display";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
@@ -8,25 +11,46 @@
     <div class="col-sm-12">
         <table class="table">
             <tr>
-               
+
+                <th>S.No</th>
                 <th>Leave Start</th>
                 <th>Leave End</th>
                 <th>Leave Reason</th>
-                <th>Approver ID</th>
+                <th>Approved/Rejected By</th>
                 <th>Status</th>
                 <th>Approved Date</th>
             </tr>
+
+
             @foreach (var k in Model)
             {
-                <tr>
-                   
-                    <td>@k.LeaveStartDate</td>
-                    <td>@k.LeaveEndDate</td>
-                    <td>@k.LeaveDescription</td>
-                    <td>@k.ApproverID</td>
-                    <td>@k.Status</td>
-                    <td>@k.ApprovedDate</td>
-                </tr>
+                if (k.Employee==null)
+                {
+                    <tr>
+
+                        <td>@count</td>
+                        <td>@k.Leaves.LeaveStartDate</td>
+                        <td>@k.Leaves.LeaveEndDate</td>
+                        <td>@k.Leaves.LeaveDescription</td>
+                        <td></td>
+                        <td>@k.LeaveStatus.Status</td>
+                        <td>@k.Leaves.ApprovedDate</td>
+                    </tr>
+                    count = count + 1;
+                }
+                else
+                    {
+             <tr>
+                <td>@count</td>
+                <td>@k.Leaves.LeaveStartDate</td>
+                <td>@k.Leaves.LeaveEndDate</td>
+                <td>@k.Leaves.LeaveDescription</td>
+                <td>@k.Employee.EmployeeName</td>
+                <td>@k.LeaveStatus.Status</td>
+                <td>@k.Leaves.ApprovedDate</td>
+             </tr>
+                }
+                count = count + 1;
             }
 
         </table>

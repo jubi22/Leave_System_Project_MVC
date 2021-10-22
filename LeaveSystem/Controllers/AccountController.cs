@@ -44,11 +44,17 @@ namespace LeaveSystem.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
+                else
+                {
+                    ViewBag.mess = "Invalid Credentials";
+                    return View(login);
+                }
 
             }
             else
             {
-                ModelState.AddModelError("x", "Invalid Credentials");
+              
+              ModelState.AddModelError("x", "Invalid Credentials");
             }
             return View(login);
         }
@@ -105,10 +111,31 @@ namespace LeaveSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                edit.EmployeeID = Convert.ToInt32(Session["CurrentEmpID"]);
-                this.es.UpdateEmployeeDetails(edit);
-                Session["CurrentName"] = edit.EmployeeName;
-                return RedirectToAction("Index", "Home");
+                if (edit.EmployeeName != null)
+                {
+                    edit.EmployeeID = Convert.ToInt32(Session["CurrentEmpID"]);
+                    if (edit.EmployeeContactNo != null) 
+                    {
+                        this.es.UpdateEmployeeDetails(edit);
+                    }
+                    else
+                    {
+
+                        EmployeeViewModel evm = this.es.GetPhoneByID(edit.EmployeeID);
+                        edit.EmployeeContactNo = evm.EmployeeContactno;
+                        this.es.UpdateEmployeeDetails(edit);
+
+                    }
+                    Session["CurrentName"] = edit.EmployeeName;
+                    return RedirectToAction("Index", "Home");
+                }
+                else if(edit.EmployeeName==null)
+                {
+                    ViewBag.mess = "Fill required fields or click cancel to go back";
+                    
+                }
+                return View();
+
             }
             else
             {
@@ -184,8 +211,24 @@ namespace LeaveSystem.Controllers
         {
             if(ModelState.IsValid)
             {
-                this.es.UpdateEmployeeDetails(edit);
-                return RedirectToAction("Index", "Home");
+                if (edit.EmployeeName != null)
+                {
+                    if (edit.EmployeeContactNo != null)
+                    {
+                        this.es.UpdateEmployeeDetails(edit);
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        EmployeeViewModel evm = this.es.GetPhoneByID(edit.EmployeeID);
+                        edit.EmployeeContactNo = evm.EmployeeContactno;
+                        this.es.UpdateEmployeeDetails(edit);
+                       
+                    }
+                    return RedirectToAction("Index", "Home");
+
+                }
+                return View();
             }
             else
             {

@@ -17,7 +17,6 @@ namespace LeaveSystem.DomainModels
         public int Days { get; set; }
         public string Leavetype { get; set; }
         public int LeaveStatusID { get; set; }
-        public string Status { get; set; }
         [MaxLength(250)]
         public string LeaveDescription { get; set; }
         public DateTime? ApprovedDate { get; set; }

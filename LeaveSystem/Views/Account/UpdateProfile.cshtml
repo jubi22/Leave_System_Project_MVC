@@ -11,12 +11,13 @@
                 @Html.AntiForgeryToken()
                 <div class="form-group mr-3">
                     <label for="email">Email</label>
-                    <input type="text" value="@Session["CurrentEmail"]" class="form-control"/>
+                    <input type="text" value="@Session["CurrentEmail"]" class="form-control" disabled/>
                 </div>
                 <div class="form-group mr-3">
                     <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" name="EmployeeName"
                             value="@Session["CurrentName"]"  />
+                    @Html.ValidationMessageFor(t=>t.EmployeeName)
                 </div>
                 <div class="form-group mr-3">
                     <label for="phone">Contact.No</label>
@@ -39,4 +40,6 @@
         }
         $(".needs-validation")[0].classList.add("was-validated");
     }
+    if ('@ViewBag.mess' != "")
+        alert('@ViewBag.mess');
 </script>

@@ -39,6 +39,11 @@ namespace LeaveSystem.Repositories
                 dbcontext.SaveChanges();
             }
         }
+        public Employee GetPhoneByID(int id)
+        {
+            Employee e = dbcontext.Employees.Where(t => t.EmployeeID == id).FirstOrDefault();
+            return e;
+        }
         public void UpdateEmployeePassword(Employee emp)
         {
             Employee e = dbcontext.Employees.Where(t => t.EmployeeID == emp.EmployeeID).FirstOrDefault();

@@ -12,7 +12,7 @@
                 <div class="form-group mr-3">
                     <label for="empid">Employee ID</label>
                     <input type="text" class="form-control" id="empid" name="EmployeeID"
-                           value="@Model.EmployeeID" disabled/>
+                           value="@Model.EmployeeID" />
                 </div>
                 <div class="form-group mr-3">
                     <label for="email">Email</label>
@@ -22,8 +22,7 @@
                 <div class="form-group mr-3">
                     <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" name="EmployeeName" />
-                    <div class="valid-feedback">Looks good</div>
-                    <div class="invalid-feedback">Invalid!!</div>
+                 @Html.ValidationMessageFor(t=>t.EmployeeName)
                 </div>
 
                 <input type="hidden" name="EmployeeID" value="@Model.EmployeeID" />

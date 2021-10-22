@@ -10,8 +10,8 @@ namespace LeaveSystem.Repositories
     public interface  ILeavesRepository
     {
         void ApplyLeaves(Leaves leaves);
-        List<Leaves> GetLeaveDetails();
+        List<DTO.LeavesDTO> GetLeaveDetails();
         void UpdateLeave(Leaves leaves);
-        List<Leaves> GetLeaveByID(int ID);
+        List<DTO.LeavesDTO> GetLeaveByID(int ID);
     }
 }

@@ -55,17 +55,9 @@
     <Compile Include="Employee.cs" />
     <Compile Include="Leaves.cs" />
     <Compile Include="LeaveStatus.cs" />
-    <Compile Include="Migrations\202110201456357_initial_tables.cs" />
-    <Compile Include="Migrations\202110201456357_initial_tables.designer.cs">
-      <DependentUpon>202110201456357_initial_tables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110201512268_initial_data_roles.cs" />
-    <Compile Include="Migrations\202110201512268_initial_data_roles.designer.cs">
-      <DependentUpon>202110201512268_initial_data_roles.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110201517210_initial_data_leavestatus.cs" />
-    <Compile Include="Migrations\202110201517210_initial_data_leavestatus.designer.cs">
-      <DependentUpon>202110201517210_initial_data_leavestatus.cs</DependentUpon>
+    <Compile Include="Migrations\202110210615511_remove_status.cs" />
+    <Compile Include="Migrations\202110210615511_remove_status.designer.cs">
+      <DependentUpon>202110210615511_remove_status.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,14 +68,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202110201456357_initial_tables.resx">
-      <DependentUpon>202110201456357_initial_tables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110201512268_initial_data_roles.resx">
-      <DependentUpon>202110201512268_initial_data_roles.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110201517210_initial_data_leavestatus.resx">
-      <DependentUpon>202110201517210_initial_data_leavestatus.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202110210615511_remove_status.resx">
+      <DependentUpon>202110210615511_remove_status.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

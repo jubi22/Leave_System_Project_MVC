@@ -12,7 +12,7 @@ namespace LeaveSystem.ViewModels
         public int EmployeeID { get; set; }
         public string EmployeeEmail { get; set; }
         public int ApproverID { get; set; }
-        public string Status { get; set; }
+   
         public int LeaveID { get; set; }
         public string LeaveDescription { get; set; }
         public int LeaveStatusID { get; set; }

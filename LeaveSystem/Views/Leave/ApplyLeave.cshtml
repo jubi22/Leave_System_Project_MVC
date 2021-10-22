@@ -12,13 +12,13 @@
                 @Html.AntiForgeryToken()
                 <div class="form-group mr-3">
                     <label for="empid">Employee ID</label>
-                    <input  class="form-control" id="empid" name="EmployeeID"
-                         value="@Session["CurrentEmpID"]"/>
+                    <input class="form-control" id="empid" name="EmployeeID"
+                           value="@Session["CurrentEmpID"]" />
 
                     <div class="valid-feedback">Looks good!</div>
                     <div class="invalid-feedback">Invalid ID</div>
                 </div>
-                
+
                 <div class="form-group mr-3">
                     <label for="start">Leave Start Date</label>
                     <input type="date" class="form-control" id="start" name="LeaveStartDate"
@@ -29,7 +29,7 @@
                 <div class="form-group mr-3">
                     <label for="end">Leave End Date</label>
                     <input type="date" class="form-control" id="end" name="LeaveEndDate"
-                           autofocus="autofocus" required="required" onblur="compare();"/>
+                           autofocus="autofocus" required="required" onblur="compare();" />
                     <div class="valid-feedback">Looks good!</div>
                     <div class="invalid-feedback">Invalid</div>
                 </div>
@@ -40,12 +40,16 @@
                     <div class="valid-feedback">Looks good!</div>
                     <div class="invalid-feedback">Invalid</div>
                 </div>
+
                 <div class="form-group mr-3">
                     <label for="type">Leave Type</label>
                     <select class="form-control" id="type" name="Leavetype" required="required">
                         <option value="">Select</option>
                         <option value="Paid Leave">Paid Leave</option>
                         <option value="Maternity Leave">Maternity Leave</option>
+                        <option value="Paternity Leave">Paternity Leave</option>
+                        <option value="Loss of Pay">Loss of Pay</option>
+                        <option value="Compensatory leave">Compensatory Leave</option>
                     </select>
                     <div class="valid-feedback">Looks good!</div>
                     <div class="invalid-feedback">Invalid</div>
@@ -58,9 +62,10 @@
                     <div class="invalid-feedback">Invalid</div>
                 </div>
                 <input type="hidden" name="LeaveStatusID" value="1" />
-               
+                <input type="hidden" name="ApproverID" value="0" />
                 <button class="btn btn-success confirm" type="submit">
-                Apply</button>
+                    Apply
+                </button>
             </form>
         </div>
     </div>
@@ -79,8 +84,15 @@
         var startDt = document.getElementById("start").value;
         var endDt = document.getElementById("end").value;
 
-        if ((new Date(startDt).getTime() > new Date(endDt).getTime())) {
-            alert("Leave End date should not be lesser than Leave start date")
+        if ((new Date(startDt).getTime() > new Date(endDt).getTime())
+            || (new Date(startDt).getTime() == new Date(endDt).getTime()) ) {
+            alert("Leave End date should not be lesser than or same as Leave start date")
+            $(':input[type=submit]').prop('disabled', true);
+            $("#start").focus()
+        }
+
+        else if (startDt == "" || endDt=="") {
+            alert("Leave Dates are mandatory for appling leave")
             $(':input[type=submit]').prop('disabled', true);
             $("#start").focus()
         }

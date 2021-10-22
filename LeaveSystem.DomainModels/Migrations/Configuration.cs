@@ -18,7 +18,7 @@
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
-            context.Employees.Add
+           /* context.Employees.Add
                 (
                 new Employee()
                 {
@@ -36,7 +36,7 @@
             context.Roles.Add(new Role() { RoleID = 3, RoleName = "Employee" });
             context.LeaveStatus.Add(new LeaveStatus() { StatusID = 1, Status = "Pending" });
             context.LeaveStatus.Add(new LeaveStatus() { StatusID = 2, Status = "Approved" });
-            context.LeaveStatus.Add(new LeaveStatus() { StatusID = 3, Status = "Rejected" });
+            context.LeaveStatus.Add(new LeaveStatus() { StatusID = 3, Status = "Rejected" });*/
 
         }
     }

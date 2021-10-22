@@ -10,8 +10,8 @@ namespace LeaveSystem.ServiceLayer
     public interface ILeaveServieLayer
     {
         void ApplyLeaves(ApplyLeaveViewModel avm);
-        List<LeaveDetailsViewModel> GetLeaves();
+        List<DTO.LeavesDTO> GetLeaves();
         void UpdateLeave(EditLeaveViewModel evm);
-        List<LeaveDetailsViewModel> GetLeaveByID(int LeaveID);
+        List<DTO.LeavesDTO> GetLeaveByID(int LeaveID);
     }
 }

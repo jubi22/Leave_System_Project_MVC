@@ -9,7 +9,7 @@ namespace LeaveSystem.ViewModels
 {
     public class EditEmployeeDetailsViewModel
     {
-        [Required]
+       
         
         public string EmployeeName { get; set; }
         public string EmployeeContactNo { get; set; }

@@ -31,7 +31,7 @@
                 <div class="form-group mr-3">
                     <label for="confirmpwd">Confirm Password</label>
                     <input type="password" class="form-control" id="confirmpwd" name="ConfirmPassword"
-                           autofocus="autofocus" required="required" />
+                          onblur="compare()" autofocus="autofocus" required="required" />
                     <small id="mess"></small>
                 </div>
                 <div class="form-group mr-3">
@@ -80,7 +80,7 @@
                     <input type="file" class="form-control-file" id="img" name="Image"/>
    
                 </div>
-                <button class="btn btn-danger" type="submit">Register Employee</button>
+                <button class="btn btn-danger confirm" type="submit">Register Employee</button>
             </form>
         </div>
     </div>
@@ -131,16 +131,20 @@
         });
     }
     );
-
-    $('#pwd, #confirmpwd').blur(function () {
+    function compare() {
         if ($('#pwd').val() == $('#confirmpwd').val()) {
             $('#mess').html('Passwords matches').css('color', 'green');
+            $(':input[type=submit]').prop('disabled', false);
         }
         else {
             $('#mess').html('Passwords dont match').css('color', 'red');
-            $("#confirmpwd").focus();
+            $(':input[type=submit]').prop('disabled', true);
+            $('#pwd').focus();
         }
-        
+    }
+    $('.confirm').on('click', function () {
+        return confirm('You are about to add an employee');
     });
+ 
 </script>
 

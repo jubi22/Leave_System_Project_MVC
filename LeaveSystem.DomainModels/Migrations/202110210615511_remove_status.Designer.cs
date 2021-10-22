@@ -7,13 +7,13 @@ namespace LeaveSystem.DomainModels.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class initial_data_roles : IMigrationMetadata
+    public sealed partial class remove_status : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initial_data_roles));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(remove_status));
         
         string IMigrationMetadata.Id
         {
-            get { return "202110201512268_initial_data_roles"; }
+            get { return "202110210615511_remove_status"; }
         }
         
         string IMigrationMetadata.Source

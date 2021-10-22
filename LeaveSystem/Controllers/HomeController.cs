@@ -11,11 +11,7 @@ namespace LeaveSystem.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        readonly IEmployeeService es;
-        public HomeController(IEmployeeService es)
-        {
-            this.es = es;
-        }
+        
         public ActionResult Index()
         {
             return View();
