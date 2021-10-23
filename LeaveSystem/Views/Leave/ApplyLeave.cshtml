@@ -3,7 +3,11 @@
     ViewBag.Title = "Apply Leave";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
-
+<style>
+    .field-validation-error {
+        color: red
+    }
+</style>
 <div class="row">
     <div class="col-sm-12">
         <div class="mx-auto loginbox" style="width:500px">
@@ -14,31 +18,25 @@
                     <label for="empid">Employee ID</label>
                     <input class="form-control" id="empid" name="EmployeeID"
                            value="@Session["CurrentEmpID"]" />
-
-                    <div class="valid-feedback">Looks good!</div>
-                    <div class="invalid-feedback">Invalid ID</div>
                 </div>
 
                 <div class="form-group mr-3">
                     <label for="start">Leave Start Date</label>
                     <input type="date" class="form-control" id="start" name="LeaveStartDate"
                            autofocus="autofocus" required="required" />
-                    <div class="valid-feedback">Looks good!</div>
-                    <div class="invalid-feedback">Invalid</div>
+                    @Html.ValidationMessageFor(t => t.LeaveStartDate)
                 </div>
                 <div class="form-group mr-3">
                     <label for="end">Leave End Date</label>
                     <input type="date" class="form-control" id="end" name="LeaveEndDate"
                            autofocus="autofocus" required="required" onblur="compare();" />
-                    <div class="valid-feedback">Looks good!</div>
-                    <div class="invalid-feedback">Invalid</div>
+                    @Html.ValidationMessageFor(t => t.LeaveEndDate)
                 </div>
                 <div class="form-group mr-3">
                     <label for="day">No. of days</label>
                     <input type="text" class="form-control" id="day" name="Days"
                            autofocus="autofocus" required="required" />
-                    <div class="valid-feedback">Looks good!</div>
-                    <div class="invalid-feedback">Invalid</div>
+                    @Html.ValidationMessageFor(t => t.Days)
                 </div>
 
                 <div class="form-group mr-3">
@@ -51,20 +49,21 @@
                         <option value="Loss of Pay">Loss of Pay</option>
                         <option value="Compensatory leave">Compensatory Leave</option>
                     </select>
-                    <div class="valid-feedback">Looks good!</div>
-                    <div class="invalid-feedback">Invalid</div>
+                    @Html.ValidationMessageFor(t => t.Leavetype)
                 </div>
                 <div class="form-group mr-3">
                     <label for="descr">Leave reason</label>
                     <textarea id="descr" name="LeaveDescription" placeholder="Type here.."
                               required="required"></textarea>
-                    <div class="valid-feedback">Looks good!</div>
-                    <div class="invalid-feedback">Invalid</div>
+                    @Html.ValidationMessageFor(t => t.LeaveDescription)
                 </div>
                 <input type="hidden" name="LeaveStatusID" value="1" />
                 <input type="hidden" name="ApproverID" value="0" />
-                <button class="btn btn-success confirm" type="submit">
+                <button class="btn btn-danger confirm" type="submit">
                     Apply
+                </button>
+                <button class="btn btn-success" formaction="/home/index">
+                    Cancel
                 </button>
             </form>
         </div>
@@ -99,10 +98,8 @@
         else {
             $(':input[type=submit]').prop('disabled', false);
         }
-
-        $('.confirm').on('click', function () {
-            return confirm('You are about to apply for leave!!');
-        });
     }
+        if ('@ViewBag.mess' != "")
+        alert('@ViewBag.mess');
 </script>
 

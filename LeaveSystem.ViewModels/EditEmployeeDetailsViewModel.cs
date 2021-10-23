@@ -10,7 +10,7 @@ namespace LeaveSystem.ViewModels
     public class EditEmployeeDetailsViewModel
     {
        
-        
+        [Required(ErrorMessage ="Name Requrired")]
         public string EmployeeName { get; set; }
         public string EmployeeContactNo { get; set; }
         public string EmployeeEmail { get; set; }

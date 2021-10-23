@@ -20,6 +20,9 @@
      #remove:visited{
         color:blue !important
     }
+    .field-validation-error {
+        color: red
+    }
 </style>
 <div class="row">
     <div class="col-sm-12">
@@ -35,34 +38,13 @@
                 <div class="form-group mr-3">
                     <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" name="EmployeeName"
-                           value="@Session["CurrentName"]" />
+                            />
                     @Html.ValidationMessageFor(t => t.EmployeeName)
                 </div>
                 <div class="form-group mr-3">
                     <label for="phone">Contact.No</label>
                     <input type="text" class="form-control" id="phone" name="EmployeeContactNo" />
-                </div><br />
-                      <div class="form-group mr-3">
-
-                          Change Profile Image:<input type="file" class="form-control-file" name="Image" /> 
-                          @if (Session["CurrentImage"] != null) 
-                          { 
-
-                            <p>or</p>
-                          <label for="rem">Remove photo</label>
-                          <input type="radio" value="yes"
-                                 id="rem" name="Image" />
-                          <label>
-                              Yes
-                          </label>
-                          <input type="radio" value="no"
-                                 id="img" name="Image" />
-                          <label>
-                              No
-                          </label>
-                          }
-
-                      </div>
+                </div>
                 
                 <button class="btn btn-danger" type="submit">Update Profile</button>
                 <button formaction="/home/index" class="btn btn-danger">Cancel</button>

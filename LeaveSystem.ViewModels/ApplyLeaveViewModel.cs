@@ -13,14 +13,16 @@ namespace LeaveSystem.ViewModels
         public int LeaveID { get; set; }
         [Required]
         public int EmployeeID { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Select Date")]
         public DateTime LeaveStartDate { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Select Date")]
         public DateTime LeaveEndDate { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Leave Reason is required!")]
         public string LeaveDescription { get; set; }
         public string LeaveStatusID { get; set; }
+        [Required(ErrorMessage ="No. of Days is required")]
         public string Days { get; set; }
+        [Required(ErrorMessage ="Choose any type")]
         public string Leavetype { get; set; }
         public int? ApproverID { get; set; }
     }

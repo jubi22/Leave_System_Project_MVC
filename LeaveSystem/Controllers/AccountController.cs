@@ -88,13 +88,15 @@ namespace LeaveSystem.Controllers
             }
             if (ModelState.IsValid)
             {
-
+                
                 
                 this.es.InsertEmployee(register);
-                return RedirectToAction("Index", "Home");
+                ViewBag.mess = "Succesfuly added employee";
+                return View();
             }
             else
             {
+               
                 ModelState.AddModelError("x", "Invalid data");
                 return View();
             }
@@ -110,24 +112,9 @@ namespace LeaveSystem.Controllers
         [UserAuthorization]
         public ActionResult UpdateProfile(EditEmployeeDetailsViewModel edit)
         {
-           
-            if (edit.Image=="yes")
-            {
-                edit.Image = null;
-            }
-            Session["CurrentImage"] = edit.Image;
-            if ( edit.Image != null)
-            {
-                var file = Request.Files[0];
-                var imgbytes = new Byte[file.ContentLength];
-                file.InputStream.Read(imgbytes, 0, file.ContentLength);
-                var base64string = Convert.ToBase64String(imgbytes, 0, imgbytes.Length);
-                edit.Image = base64string;
-            }
             if (ModelState.IsValid)
             {
-                if (edit.EmployeeName != null)
-                {
+                     ViewBag.mess = "Successfully Updated your Information";
                     edit.EmployeeID = Convert.ToInt32(Session["CurrentEmpID"]);
                     if (edit.EmployeeContactNo != null) 
                     {
@@ -142,15 +129,7 @@ namespace LeaveSystem.Controllers
 
                     }
                     Session["CurrentName"] = edit.EmployeeName;
-                    return RedirectToAction("Index", "Home");
-                }
-                else if(edit.EmployeeName==null)
-                {
-                    ViewBag.mess = "Fill required fields or click cancel to go back";
-                    
-                }
-                return View();
-
+                    return View();
             }
             else
             {
@@ -170,9 +149,10 @@ namespace LeaveSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                ViewBag.mess = "Succesfully Changed your Password..";
                 pwd.EmployeeID = Convert.ToInt32(Session["CurrentEmpID"]);
                 this.es.UpdateEmployeePassword(pwd);
-                return RedirectToAction("Index", "Home");
+                return View();
             }
             else
             {

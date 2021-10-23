@@ -12,7 +12,7 @@ namespace LeaveSystem.ViewModels
         [Required]
         public int EmployeeID { get; set; }
         public string EmployeeEmail { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Password required")]
         public string Password { get; set; }
         [Required]
         [Compare("Password")]

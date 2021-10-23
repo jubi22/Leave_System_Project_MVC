@@ -34,10 +34,11 @@ namespace LeaveSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                ViewBag.mess = "Successfully Apllied Leave.";
                 Session["CurrentEmpID"] = apply.EmployeeID;
                 Session["CurrentLeaveID"] = apply.LeaveID;
                 this.ls.ApplyLeaves(apply);
-                return RedirectToAction("ApplyLeave", "Leave");
+                return View();
             }
             else
             {
