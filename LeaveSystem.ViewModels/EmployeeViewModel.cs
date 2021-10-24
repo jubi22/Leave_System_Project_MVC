@@ -19,9 +19,5 @@ namespace LeaveSystem.ViewModels
         public int RoleID { get; set; }
         public int RoleName { get; set; }
 
-        public static implicit operator List<object>(EmployeeViewModel v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
