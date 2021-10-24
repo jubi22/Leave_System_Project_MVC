@@ -12,6 +12,8 @@ namespace LeaveSystem.Controllers
     {
         // GET: Home
         
+        [Route("Home")]      //attribute routing 
+        [Route("")]
         public ActionResult Index()
         {
             return View();
