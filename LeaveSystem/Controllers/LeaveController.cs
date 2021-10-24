@@ -34,7 +34,7 @@ namespace LeaveSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                ViewBag.mess = "Successfully Apllied Leave.";
+                ViewBag.mess = "Successfully Applied for Leave.";
                 Session["CurrentEmpID"] = apply.EmployeeID;
                 Session["CurrentLeaveID"] = apply.LeaveID;
                 this.ls.ApplyLeaves(apply);
