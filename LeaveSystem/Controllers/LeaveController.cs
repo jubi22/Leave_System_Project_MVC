@@ -114,9 +114,10 @@ namespace LeaveSystem.Controllers
         }
             
         [UserAuthorization]
-        public ActionResult Show(int id)        //display leave request status in employee page
+        [EmployeeAuthorization]
+        public ActionResult Show()        //display leave request status in employee page
         {
-            
+            int id = Convert.ToInt32( Session["CurrentEmpID"]);
             List<DTO.LeavesDTO> l = this.ls.GetLeaveByID(id);
             
             return View(l);

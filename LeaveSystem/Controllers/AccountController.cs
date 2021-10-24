@@ -7,6 +7,8 @@ using LeaveSystem.DomainModels;
 using LeaveSystem.ViewModels;
 using LeaveSystem.ServiceLayer;
 using LeaveSystem.CustomFilters;
+using System.Net.Mail;
+using System.Net;
 namespace LeaveSystem.Controllers
 {
     public class AccountController : Controller
@@ -19,7 +21,6 @@ namespace LeaveSystem.Controllers
             this.es = es;
             this.rs = rs;
         }
-       
         public ActionResult Login()         // Login Page
         {
             LoginViewModel lvm = new LoginViewModel();
@@ -175,8 +176,9 @@ namespace LeaveSystem.Controllers
             }
             else
             {
+               
                 ModelState.AddModelError("x", "Invalid data");
-                
+
                 return RedirectToAction("Index", "Home");
             }
         }
@@ -187,6 +189,7 @@ namespace LeaveSystem.Controllers
             return RedirectToAction("Index", "Home");
         }
         [UserAuthorization]
+       
         public ActionResult Showemp(int id)             //View details of Employee
         {
            

@@ -8,7 +8,7 @@
         color:blue !important
     }
 </style>
-<div class="row">
+<div class="row" id="search">
     <div class="col-sm-12">
         <h3>Search results for @ViewBag.str</h3>
         <table class="table">
@@ -28,7 +28,7 @@
                         
                         <td><a href="/account/Showemp?id=@k.EmployeeID">View</a></td>
                         <td><a href="/account/EditEmployee?id=@k.EmployeeID">Edit</a></td>
-                        <td><a href="/account/delete?employeeid=@k.EmployeeID">Delete</a></td>
+                        <td><a class="confirm" href="/account/delete?employeeid=@k.EmployeeID">Delete</a></td>
                        
                     </tr>
 
@@ -50,5 +50,7 @@
     </div>
 </div>
 <script>
-
+    $('.confirm').on('click', function () {
+        return confirm('Are you sure?');
+    });
 </script>

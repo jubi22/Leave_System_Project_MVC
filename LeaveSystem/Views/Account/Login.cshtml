@@ -3,11 +3,6 @@
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
-<style>
-    .field-validation-error{
-        color:red
-    }
-</style>
 <div class="row">
     <div class="col-sm-12">
         <div class="mx-auto loginbox" style="width:500px">
@@ -18,17 +13,18 @@
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" name="EmployeeEmail"
                            autofocus="autofocus" required="required" />
-                    
+
                     @Html.ValidationMessageFor(t => t.EmployeeEmail)
 
                 </div>
                 <div class="form-group mr-3">
                     <label for="pwd">Password</label>
                     <input type="password" class="form-control" id="pwd" name="Password"
-                           autofocus="autofocus" required="required"/>
-                   @Html.ValidationMessageFor(t=>t.Password)
+                           autofocus="autofocus" required="required" />
+                    @Html.ValidationMessageFor(t => t.Password)
                 </div>
                 <button class="btn btn-success" type="submit">Login</button>
+               
             </form>
         </div>
     </div>

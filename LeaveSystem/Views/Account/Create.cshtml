@@ -4,11 +4,6 @@
         ViewBag.Title = "Create Employee";
         Layout = "~/Views/Shared/_LayoutPage1.cshtml";
     }
-<style>
-    .field-validation-error {
-        color: red
-    }
-</style>
     <div class="row">
         <div class="col-sm-12">
             <div class="mx-auto loginbox" style="width:500px">
@@ -146,7 +141,7 @@
             }
             $(".needs-validation")[0].classList.add("was-validated");
         }
-            if ('@ViewBag.mess' != "")
-        alert('@ViewBag.mess');
+        if ('@ViewBag.mess' != "")
+             alert('@ViewBag.mess');
     </script>
 

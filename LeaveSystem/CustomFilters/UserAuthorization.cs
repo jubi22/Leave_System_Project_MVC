@@ -10,7 +10,7 @@ namespace LeaveSystem.CustomFilters
     {
         public void OnAuthorization(AuthorizationContext context)
         {
-            if (context.RequestContext.HttpContext.Session["CurrentEmpID"] == null)
+            if (context.RequestContext.HttpContext.Session["CurrentEmpID"] == null )
             {
                 context.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(
                     new { controller = "Home", action = "Index" }));
@@ -51,6 +51,17 @@ namespace LeaveSystem.CustomFilters
 
 
             
+        }
+    }
+    public class EmployeeAuthorization : FilterAttribute, IAuthorizationFilter
+    {
+        public void OnAuthorization(AuthorizationContext context)
+        {
+            if (Convert.ToInt32(context.RequestContext.HttpContext.Session["CurrentRoleID"]) !=3  )
+            {
+                context.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(
+                    new { controller = "Home", action = "Index" }));
+            }
         }
     }
 }
